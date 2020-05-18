@@ -105,13 +105,13 @@ while True:
 
 #License below because why not :)))
 """
-Made by Sebastian Cramond in 2020. I do not own any of the libraries used and some of the 
+Made by Seb C: in 2020. I do not own any of the libraries used and some of the 
 code was taken from the examples in their respective documentation and somewhat modified by me. All 
 rights go to their respective owners.
 
 -----------------------------------------------------------------------------------------------------
 
-Copyright 2020 Sebastian Cramond
+Copyright 2020 Seb C:
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
 associated documentation files (the "Software"), to deal in the Software without restriction, 
@@ -136,6 +136,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 |/___/\__/_.__/  \___(_)  |
 |-------------------------|
 Bruh moment.
-Seb C#7326
 
 """
