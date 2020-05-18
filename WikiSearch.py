@@ -2,6 +2,7 @@
 import speech_recognition as sr
 import pyttsx3
 import wikipedia
+import requests
 
 #Text to speech and speech recognition initialization
 r = sr.Recognizer()
@@ -18,6 +19,8 @@ def searchWiki(term):
         search = wikipedia.summary(search2, sentences=3)
         print("Warning, disambiguation detected, the result may not be exactly what you searched.")
         say("Warning, disambiguation detected, the result may not be exactly what you searched.")
+    except requests.exceptions.ConnectionError:
+        search = "Cannot connect to Wikipedia..."
     finally:
         print(search+"\n")
         say(search)
@@ -97,7 +100,7 @@ while True:
     #If it couldn't connect to Google's voice recognition servers
     except sr.RequestError as e:
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
-        say("Sorry, I could not get results from Google Speech Recognition, try again later.")
+        #say("Sorry, I could not get results from Google Speech Recognition, try again later.")
 
 
 #License below because why not :)))
