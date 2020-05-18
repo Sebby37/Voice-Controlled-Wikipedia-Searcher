@@ -53,6 +53,9 @@ def main():
             print("Ok, searching Wikipedia for a random article...")
             say("Ok, searching Wikipedia for a random article...")
             searchWiki(wikipedia.random(pages=1))
+        elif text == "nevermind" or text == "never mind":
+            print("Ok, cancelling search...")
+            say("Ok, cancelling search...")
         else:
             searchWiki(text)
     
