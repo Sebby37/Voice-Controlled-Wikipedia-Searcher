@@ -12,6 +12,7 @@ tts = pyttsx3.init()
 def searchWiki(term):
     print(f"Searching wikipedia for '{term}'...")
     say(f"Searching wikipedia for '{term}'...")
+    search = term
     try:
         search = wikipedia.summary(term, sentences=3)
     except wikipedia.DisambiguationError as e:
@@ -21,6 +22,8 @@ def searchWiki(term):
         say("Warning, disambiguation detected, the result may not be exactly what you searched.")
     except requests.exceptions.ConnectionError:
         search = "Cannot connect to Wikipedia..."
+    except wikipedia.PageError:
+        search = "The page, {term}, does not exist, please try again."
     finally:
         print(search+"\n")
         say(search)
@@ -46,7 +49,11 @@ def main():
     #Does speech recognition things
     try:
         text = r.recognize_google(audio)
-        #text = "Lego"
+        if "search wiki for " in text or "search for " in text or "search Wikipedia for " in text:
+            text = text.replace("search wiki for ", "")
+            text = text.replace("search for ", "")
+            text = text.replace("search Wikipedia for ", "")
+            print("Text has been replaced.")
         print(f"Google Speech Recognition thinks you said: {text}")
         if text == "quit":
             print("Quitting the program, goodbye.")
@@ -86,7 +93,7 @@ while True:
     try:
         text2 = r.recognize_google(audio2)
         print(f"I heard '{text2}'")
-        if text2 == "hey wiki" or "hey wiki" in text2:
+        if text2 == "hey wiki" or "hey wiki" in text2 or text2 == "play wiki" or "play wiki" in text2:
             print(f"I heard '{text2}'")
             main()
         elif text2 == "quit":
